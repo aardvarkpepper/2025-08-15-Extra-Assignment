@@ -49,7 +49,6 @@ const myLoggerMiddleware = (req, res, next) => {
 };
 
 const setAPIKey = (req, res, next) => {
-  // console.log('req', req);
   req['x-api-key'] = pseudoAPIKey;
   next();
 }
@@ -99,9 +98,7 @@ app.get('/api/locked', (req, res) => {
   }
 });
 
-// /api/greetings/Hamster Huey
 app.get('/api/greetings/:userName', (req, res) => {
-  // const userNameParam = req.params.userName;
   res.status(200).send(`Hello, ${req.params.userName}!` + '<br>' + '<br>' + menuOptions);
 })
 
@@ -161,11 +158,6 @@ app.get('/api/boss/destruction', (req, res) => {
     res.status(403).send("If you were the boss, you would have visited 'api/imtheboss' to turn on boss mode.  Good thing Jigglypuff doesn't have the manual dexterity to type on a character or Jigglypuff would be the boss . . ." + '<br>' + '<br>' + menuOptions)
   }
 });
-
-//Profile Screen", and D. /api/jigglypuff that shows "Tishana is correct, Jigglypuff IS the best Pokémon". REMEMBER to add an error message if person is FORBIDDEN
-// a /greetings route that takes the name in the URL and says "Hello, <person name>!"
-// a /8ball route that generates a "Magic 8 ball" like message. Don't know what that is? check out this site: Magic 8-Ball
-// a  set of /boss routes that uses middleware to check if you are the boss before allowing you to get to the /boss/dashboard , /boss/profile , and /boss/destruction routes. Be creative with these... ALL BOSS ROUTES SHOULD BE LOGGED WITH TIMESTAMP
 
 app.listen(PORT, () => {
   console.log(`Server is running at http://localhost:${PORT}`);
